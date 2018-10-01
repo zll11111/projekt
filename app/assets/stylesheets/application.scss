@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bulma";
+
+.is-notice {
+  @extend .is-success;
+}
+
+.is-alert {
+  @extend .is-danger;
+}
+
+span.error{
+  color: red;
+}
+
+abbr[title="required"]{
+  color: red;
+}

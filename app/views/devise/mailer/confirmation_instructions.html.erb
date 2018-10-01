@@ -1,0 +1,5 @@
+<p>欢迎 <%= @email %>!</p>
+
+<p>请您点击以下链接来确认账户，并设置密码:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
