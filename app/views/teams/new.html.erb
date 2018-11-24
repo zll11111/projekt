@@ -1,0 +1,32 @@
+<section class="section">
+ <div v-cloak id="team-form"
+   data-id="<%= @team.id %>" data-team="<%= @team.to_json(except:[:id, :created_at, :updated_at],include: {users:{except:[:created_at, :updated_at]}}) %>"
+   class="columns" >
+  <%#= content_tag :div,
+                  id: "team-form",
+                  data: {
+                      id: @team.id,
+                      team: @team.to_json(except: [:id, :created_at, :update_at]),
+                      users_attributes: @team.users.to_json(except: [:created_at, :update_at])
+                  } do %>
+    <div class="column is-5">
+      <h1 class="is-2 subtitle">创建项目组</h1>
+        <%= render "form", team: @team %>
+    </div>
+    <div class="column is-5 is-offset-2" :class="{datastatic: scrollPosition < 100, datafixed: scrollPosition >=100}">
+      <h2 class="is-3 subtitle ">{{team.name}}</h2>
+      <table class="table is-fullwidth" v-if="team.users.length">
+        <thead>
+          <th>姓名</th>
+          <th>邮箱</th>
+        </thead>
+        <tr v-for="(user,index) in team.users">
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+        </tr>
+      </table>
+    </div>
+<%# end %>
+  </div>
+
+</section>

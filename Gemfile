@@ -36,9 +36,13 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 
 gem 'gravatar_image_tag', '~> 1.2'
 
+gem 'font-awesome-sass', '~> 5.5.0'
+
 gem 'wysiwyg-rails', '~> 2.8', '>= 2.8.5'
 
 gem 'public_activity', '~> 1.6', '>= 1.6.2'
+
+gem "shrine", "~> 2.0"
 #zll add end
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -52,7 +56,7 @@ gem 'public_activity', '~> 1.6', '>= 1.6.2'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+#gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

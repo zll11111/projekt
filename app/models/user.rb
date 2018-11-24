@@ -4,12 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  def password_match?
+  has_many :members, dependent: :destroy
+  has_many :teams, through: :members
+  has_many :creating_teams, class_name: :Team, foreign_key: "created_by", inverse_of: "creator"
+  has_many :projects
+   def password_match?
     self.errors[:password] << I18n.t('errors.messages.blank') if password.blank?
     self.errors[:password_confirmation] << I18n.t('errors.messages.blank') if password_confirmation.blank?
     self.errors[:password_confirmation] << I18n.translate("errors.messages.confirmation", attribute: "password") if password != password_confirmation
     password == password_confirmation && !password.blank?
-  end
+   end
 
   # new function to set the password without knowing the current
   # password used in our confirmation controller.

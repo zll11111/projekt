@@ -1,0 +1,3 @@
+class AttachFileUploader < FileUploader
+
+end

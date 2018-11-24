@@ -1,0 +1,6 @@
+<%= a.owner.name %>创建了项目组
+<% if a.trackable %>
+    <%= link_to a.trackable.name, activity.trackable %>
+<% else %>
+    <%= a.name %>,此项目组已经被删除
+<% end %>

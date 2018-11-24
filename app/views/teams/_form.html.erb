@@ -1,0 +1,59 @@
+<div class="field">
+
+  <label for="team-name" class="label">项目组名称</label>
+  <div class="control">
+    <input type="text" class="input v-cloak" id="team-name" v-model="team.name">
+  </div>
+
+</div>
+<div class="content">
+  <h2 class="title is-4">邀请用户</h2>
+  <p>邀请用户创建帐号并加入项目组。系统会给每一个被邀请用户发送确认邮件，确认邮件后用户会跳转到设置密码界面</p>
+  <div v-for="(user,index) in team.users" class="v-cloak">
+    <div v-if=" user._destroy == '1' " class="level">
+      <div class="level-left">
+        <div class="level-item">{{user.name}}将被移除</div>
+        <div class="level-item">
+          <button class="button" @click="undoRemove(index)">恢复{{user.name}}</button>
+        </div>
+      </div>
+
+    </div>
+    <div v-else>
+      <div class="field">
+        <label for="user-name" class="label">用户名</label>
+        <div class="control has-icons-left">
+          <input type="text" class="input" id="user-name" v-model="user.name">
+          <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
+        </div>
+      </div>
+      <div class="field">
+        <label for="email" class="label">邮箱</label>
+        <div class="control has-icons-left">
+          <input type="text" id="email" class="input" v-model="user.email">
+          <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+        </div>
+        <div class="has-text-danger" id="error" v-if="errors.length >0">{{errors}}</div>
+      </div>
+
+
+      <div class="control">
+        <button class="button" @click="removeUser(index)">移除用户</button>
+      </div>
+
+    </div>
+    <hr/>
+  </div>
+  <div class="control">
+    <button class="button is-primary " @click="addUser">添加用户</button>
+  </div>
+  <hr/>
+
+  <div class="control">
+    <% if current_page?(action: 'new') %>
+        <button class="button is-success is-large" @click="saveTeam">创建项目组</button>
+    <% else %>
+        <button class="button is-success is-large" @click="saveTeam">更新项目组</button>
+    <% end %>
+  </div>
+</div>

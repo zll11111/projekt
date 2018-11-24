@@ -1,0 +1,37 @@
+<%= simple_form_for(@project) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <% if !@teams.empty? %>
+        <div class="field">
+          <div class="control">
+            <%= f.input :name, input_html: {class: "input"}, wrapper: false, label_html: {class: "label"} %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <%= f.input :description, input_html: {class: "input"}, wrapper: false, label_html: {class: "label"} %>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <div class="control">
+            <%= f.association :team, collection: @teams, prompt: "选择一个项目组", input_html: {class: "input"}, wrapper: false, label_html: {class: "label"} %>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit %>
+        </div>
+    <% else %>
+        <article class="message is-warning">
+          <div class="message-body">
+            <strong>您还没有加入任何项目组</strong>
+            <p>您可以创建项目组或被其他用户邀请进入</p>
+            <br>
+            <%= link_to '创建项目组', new_team_path,class: 'button' %>
+          </div>
+        </article>
+    <% end %>
+<% end %>

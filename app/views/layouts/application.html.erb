@@ -5,10 +5,11 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%#= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application' %>
-
+  <%= javascript_pack_tag 'projekt' %>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
 <body>
@@ -19,9 +20,9 @@
 <nav class="navbar is-link">
   <div class="navbar-brand">
     <%= link_to root_path, class: "navbar-item" do %>
-        <h1 class="title is-5 has-text-white" data-target="navbar">projekt</h1>
+        <h1 class="title is-5 has-text-white" >projekt</h1>
     <% end %>
-    <div class="navbar-burger">
+    <div class="navbar-burger burger" data-target="navbar">
       <span></span>
       <span></span>
       <span></span>
@@ -33,8 +34,8 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <%= link_to "新 建", '#', class: "navbar-link" %>
             <div class="navbar-dropdown">
-              <%= link_to '项目', '#', class: "navbar-item" %>
-              <%= link_to '工作组', '#', class: "navbar-item" %>
+              <%= link_to '项目', new_project_path, class: "navbar-item" %>
+              <%= link_to '工作组', new_team_path, class: "navbar-item" %>
             </div>
           </div>
           <div class="navbar-item has-dropdown is-hoverable ">

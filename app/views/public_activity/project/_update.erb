@@ -1,0 +1,6 @@
+<%= a.owner.name %>修改了项目
+<% if a.trackable %>
+    <%= link_to a.trackable.name,a.trackable %>
+<% else %>
+    <%= a.name %>,该项目已经被删除
+<% end %>

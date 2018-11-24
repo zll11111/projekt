@@ -1,0 +1,11 @@
+<section class="section">
+  <div id="team-form"
+       data-id="<%= @team.id %>" data-team="<%= @team.to_json(except:[:id, :created_at, :updated_at],include: {users:{except:[:created_at, :updated_at]}}) %>">
+    <h1>Editing Team</h1>
+
+<%= render 'form', team: @team %>
+
+<%= link_to 'Show', @team %> |
+<%= link_to 'Back', teams_path %>
+  </div>
+</section>
